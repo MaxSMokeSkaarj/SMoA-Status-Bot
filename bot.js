@@ -4,7 +4,7 @@ const { Client, Intents } = require('discord.js');
 const robot = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const fs = require('fs');
 const os = require('os-utils')
-let config = require('./json/dsconf.json');
+let config = require('./json/config.json');
 let token = config.token;
 
 //активация бота
