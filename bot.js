@@ -2,7 +2,7 @@ const { Client, Intents } = require('discord.js');
 const robot = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const si = require('systeminformation');
 const os = require('os-utils');
-let config = require('./json/dsconf.json');
+let config = require('./json/config.json');
 let token = config.token;
 
 robot.on("ready", function() {
@@ -18,7 +18,7 @@ setInterval( () => {
 
  si.mem().then(x=> {
   totalmem = (x.total / 1024 / 1024 / 1024).toFixed(1);
-  usedmem = ((x.active / 1024 / 1024 / 1024).toFixed(1))-((x.buffers / 1024 / 1024 / 1024).toFixed(1));
+  usedmem = ((x.active / 1024 / 1024 / 1024).toFixed(1));
  });
 
  robot.user.setActivity(`CPU: ${cpu}%, Mem:${usedmem}/${totalmem}GB`, {type: 3});
