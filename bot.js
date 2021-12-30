@@ -23,10 +23,7 @@ setInterval( () => {
  });
 
  //сбор загруженности озу
- async function getMem() {
-  return (await si.mem());
- };
- getMem().then(x=> {
+ si.mem().then(x=> {
   totalmem = (x.total / 1024 / 1024 / 1024).toFixed(1);
   usedmem = (x.active / 1024 / 1024 / 1024).toFixed(1);
  });
