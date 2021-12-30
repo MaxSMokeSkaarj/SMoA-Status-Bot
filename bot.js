@@ -1,9 +1,9 @@
 //инит зависимостей
-const { exec } = require('child_process')
+const { exec } = require('child_process');
 const { Client, Intents } = require('discord.js');
 const robot = new Client({ intents: [Intents.FLAGS.GUILDS] });
-const fs = require('fs');
-const os = require('os-utils')
+const si = require('systeminformation');
+const os = require('os-utils');
 let config = require('./json/config.json');
 let token = config.token;
 
@@ -13,22 +13,25 @@ robot.on("ready", function() {
 });
 
 //предобьявление переменных
-let cpu, fullmem,totmem,mem
+let cpu, totalmem, usedmem;
 
-//работаем со сбором данных и изменением статуса бота
-setInterval( () =>{
- //запрашиваем  загруженность процесссора
+setInterval( () => {
+
+ //запрашиваем  загруженность процессора
  os.cpuUsage( (v) => {
-  cpu = v * 100
-  cpu = cpu.toFixed(1)
- })
+  cpu = (v * 100).toFixed(1);
+ });
+
  //сбор загруженности озу
- exec('free -h', (e, stdout, stderr) => {
-  let mem = stdout.split('\n')[1].split(' ').join().split(',,,,,,,,,,,')[1].split(',,,,,,,') //костыль, работает только для linux
-  fullmem= mem[1].slice(0,-2) //количество занятого озу
-  totmem= mem[0].slice(0,-2) //всего озу
- })
+ async function getMem() {
+  return (await si.mem());
+ };
+ getMem().then(x=> {
+  totalmem = (x.total / 1024 / 1024 / 1024).toFixed(1);
+  usedmem = (x.active / 1024 / 1024 / 1024).toFixed(1);
+ });
+
  //ставим боту статус
- robot.user.setActivity(`CPU: ${cpu}%, Mem:${fullmem}/${totmem}GB`, {type: 3})
-}, 5000)
+ robot.user.setActivity(`CPU: ${cpu}%, Mem:${usedmem}/${totalmem}GB`, {type: 3});
+}, 5000);
 robot.login(token); // аутенфикация по токену
