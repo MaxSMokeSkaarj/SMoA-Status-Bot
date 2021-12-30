@@ -1,5 +1,4 @@
 //инит зависимостей
-const { exec } = require('child_process');
 const { Client, Intents } = require('discord.js');
 const robot = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const si = require('systeminformation');
