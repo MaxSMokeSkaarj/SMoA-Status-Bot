@@ -18,7 +18,8 @@ setInterval( () => {
 
  si.mem().then(x=> {
   totalmem = (x.total / 1024 / 1024 / 1024).toFixed(1);
-  usedmem = ((x.active / 1024 / 1024 / 1024).toFixed(1));
+  usedmem = (((x.active / 1024 / 1024 / 1024)-0.3).toFixed(1));
+  console.log(x)
  });
 
  robot.user.setActivity(`CPU: ${cpu}%, Mem:${usedmem}/${totalmem}GB`, {type: 3});
