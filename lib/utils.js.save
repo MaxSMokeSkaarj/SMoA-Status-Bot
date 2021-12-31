@@ -1,0 +1,27 @@
+//Обьявляем библиотеки
+const { exec } = require('child_process');
+const si = require('systeminformation');
+const os = require('os-utils');
+
+//Предобьявление переменных
+let cpuLoad, totalMem, usedMem;
+
+//Фунуция получения данных об ОЗУ
+async function getMem() {
+ return (await si.mem());
+};
+setInterval( () => {
+ //Запрашиваем  загруженность процессора
+ os.cpuUsage( (v) => {
+  cpuLoad = (v * 100).toFixed(1);
+});
+//Сбор загруженности озу
+getMem().then(x=> {
+ totalMem = (x.total / 1024 / 1024 / 1024).toFixed(1);
+ usedMem = (x.active / 1024 / 1024 / 1024).toFixed(1);
+});
+}, 1000}
+//передаём дальше
+exports.cpuLoad = cpuLoad;
+exports.totalMem = totalMem;
+exports.usedMem = usedMem;
