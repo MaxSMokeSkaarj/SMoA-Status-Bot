@@ -9,7 +9,7 @@ robot.on("ready", function() {
  console.log(robot.user.username + " is running");
 });
 
-let cpu, totalmem, usedmem;
+let cpu = 0, totalmem = 0, usedmem = 0;
 
 setInterval( () => {
  os.cpuUsage( (v) => {
@@ -17,9 +17,8 @@ setInterval( () => {
  });
 
  si.mem().then(x=> {
-  totalmem = (x.total / 1024 / 1024 / 1024).toFixed(1);
-  usedmem = (((x.active / 1024 / 1024 / 1024)-0.3).toFixed(1));
-  console.log(x)
+  totalmem = (x.total / 1024 / 1024 / 1024).toFixed(2);
+  usedmem = (((x.active / 1024 / 1024 / 1024) - 0.3).toFixed(2));
  });
 
  robot.user.setActivity(`CPU: ${cpu}%, Mem:${usedmem}/${totalmem}GB`, {type: 3});
