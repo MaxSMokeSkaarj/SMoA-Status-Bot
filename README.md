@@ -1,2 +1,4 @@
 # SFork-Status-Bot
-Discord System status bot
+Простой Статус бот от ArtArsonist(aka MaxSMokeSkaarj).
+Создан в противовес [KGS-Status-Bot](https://github.com/KGStudiosX/KGS-Status)
+
