@@ -1,8 +1,9 @@
+require('dotenv').config();
+
 const { Client, Intents } = require('discord.js');
 const robot = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const config = require('./json/config.json');
 const {getStatus} = require('./lib/utils.js');
-const token = config.token;
 
 robot.on("ready", function() {
 	console.log(robot.user.username + " is running");
@@ -13,8 +14,8 @@ robot.on("ready", function() {
 		}).catch(e => {
 			console.log(e);
 		});
-	}, 1000);
+	}, config.statusInterval);
  
 });
 
-robot.login(token);
+robot.login(process.env.DISCORD_TOKEN);
