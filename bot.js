@@ -1,26 +1,19 @@
 const { Client, Intents } = require('discord.js');
 const robot = new Client({ intents: [Intents.FLAGS.GUILDS] });
-const si = require('systeminformation');
-const os = require('os-utils');
-let config = require('./json/config.json');
-let token = config.token;
+const config = require('./json/config.json');
+const {getStatus} = require('./lib/utils.js');
+const token = config.token;
 
 robot.on("ready", function() {
- console.log(robot.user.username + " is running");
+	console.log(robot.user.username + " is running");
+	setInterval(() => {
+		getStatus()
+		.then(({cpu, usedMem, totalMem}) => {
+			 robot.user.setActivity(`CPU: ${cpu}%, Mem:${usedMem}/${totalMem}GB`, {type: 3});
+		}).catch(e => {
+			console.log(e);
+		});
+	}, 1000);
+ 
 });
-
-let cpu = 0, totalmem = 0, usedmem = 0;
-
-setInterval( () => {
- os.cpuUsage( (v) => {
-  cpu = (v * 100).toFixed(1);
- });
-
- si.mem().then(x=> {
-  totalmem = (x.total / 1024 / 1024 / 1024).toFixed(2);
-  usedmem = (((x.active / 1024 / 1024 / 1024) - 0.3).toFixed(2));
- });
-
- robot.user.setActivity(`CPU: ${cpu}%, Mem:${usedmem}/${totalmem}GB`, {type: 3});
-}, 5000);
 robot.login(token);
