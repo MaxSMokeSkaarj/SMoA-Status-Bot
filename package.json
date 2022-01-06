@@ -1,0 +1,28 @@
+{
+  "name": "sfork-status-bot",
+  "version": "0.0.1",
+  "description": "Простой Статус бот от ArtArsonist(aka MaxSMokeSkaarj). Создан в противовес [KGS-Status-Bot](https://github.com/KGStudiosX/KGS-Status)",
+  "main": "bot.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxSMoke-Official/SFork-Status-Bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaxSMoke-Official/SFork-Status-Bot/issues"
+  },
+  "homepage": "https://github.com/MaxSMoke-Official/SFork-Status-Bot#readme",
+  "dependencies": {
+    "discord.js": "^13.5.0",
+    "dotenv": "^10.0.0",
+    "systeminformation": "^5.9.17"
+  }
+}
