@@ -16,5 +16,4 @@ robot.on("ready", function() {
 	}, 1000);
  
 });
-
 robot.login(token);
