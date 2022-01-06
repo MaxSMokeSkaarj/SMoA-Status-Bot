@@ -1,6 +1,6 @@
 {
   "name": "sfork-status-bot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Простой Статус бот от ArtArsonist(aka MaxSMokeSkaarj). Создан в противовес [KGS-Status-Bot](https://github.com/KGStudiosX/KGS-Status)",
   "main": "bot.js",
   "directories": {
