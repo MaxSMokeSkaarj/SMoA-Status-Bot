@@ -32,7 +32,7 @@ jobs:
     - name: Artifact source
       uses: actions/upload-artifact@v2
       with:
-        name: all
+        name: src
         path: |
           .
           !node_modules
