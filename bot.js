@@ -9,8 +9,8 @@ robot.on("ready", function() {
 	console.log(robot.user.username + " is running");
 	setInterval(() => {
 		getStatus()
-		.then(({cpu, usedMem, totalMem}) => {
-			 robot.user.setActivity(`CPU: ${cpu}%, Mem:${usedMem}/${totalMem}GB`, {type: 3});
+		.then(({cpu, usedMem, totalMem, temp}) => {
+			 robot.user.setActivity(`CPU: ${cpu}%, CPU temp: ${temp.main}°C, Mem:${usedMem}/${totalMem}GB`, {type: 3});
 		}).catch(e => {
 			console.log(e);
 		});
