@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/MaxSMoke-Official/SFork-Status-Bot#readme",
   "dependencies": {
-    "discord.js": "^13.5.0",
+    "discord.js": "^13.8.1",
     "dotenv": "^10.0.0",
-    "systeminformation": "^5.11.16"
+    "systeminformation": "^5.11.22"
   }
 }
