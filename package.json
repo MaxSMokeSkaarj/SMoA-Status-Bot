@@ -23,6 +23,6 @@
   "dependencies": {
     "discord.js": "^13.8.1",
     "dotenv": "^10.0.0",
-    "systeminformation": "^5.11.22"
+    "systeminformation": "^5.21.7"
   }
 }
